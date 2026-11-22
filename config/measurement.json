@@ -1,0 +1,44 @@
+{
+  "testType": "slump_cone",
+  "baseUnit": "cm",
+  "outputUnit": "in",
+  "conversions": {
+    "cm": 1,
+    "mm": 10,
+    "in": 0.393701
+  },
+  "calibration": {
+    "enabled": true,
+    "referenceType": "known_object",
+    "baseDimension": 30
+  },
+  "consistencyRanges": [
+    { "id": "dry", "label": "Seca", "min": 0, "max": 4, "color": "neutral" },
+    { "id": "plastic", "label": "Plástica", "min": 4, "max": 12, "color": "success" },
+    { "id": "fluid", "label": "Fluida", "min": 12, "max": 30, "color": "warning" }
+  ],
+  "confidenceThresholds": {
+    "success": 80,
+    "warning": 55,
+    "error": 0
+  },
+  "evidenceMinimums": {
+    "minWidthPx": 640,
+    "minHeightPx": 480,
+    "minSharpness": 40,
+    "minBrightness": 35,
+    "maxBrightness": 85,
+    "requireReferenceVisible": true
+  },
+  "messages": {
+    "preliminary": "Estimación preliminar sujeta a validación técnica.",
+    "notConclusive": "La evidencia no es suficiente para estimar una medida.",
+    "reasons": {
+      "low_resolution": "Resolución por debajo del mínimo configurado.",
+      "low_sharpness": "Imagen borrosa o fuera de foco.",
+      "poor_lighting": "Iluminación insuficiente o sobreexpuesta.",
+      "reference_missing": "No se detecta la referencia de calibración.",
+      "processing_failed": "El motor no pudo procesar el archivo."
+    }
+  }
+}

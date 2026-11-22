@@ -1,0 +1,18 @@
+{
+  "allowedImageTypes": ["image/jpeg", "image/png", "image/webp"],
+  "allowedVideoTypes": ["video/mp4", "video/quicktime", "video/webm"],
+  "maxImageBytes": 10485760,
+  "maxVideoBytes": 104857600,
+  "maxVideoSeconds": 120,
+  "statuses": {
+    "uploading": { "label": "Subiendo archivo", "color": "info" },
+    "analyzing": { "label": "Analizando evidencia", "color": "info" },
+    "completed": { "label": "Análisis completado", "color": "success" },
+    "warning": { "label": "Resultado con advertencias", "color": "warning" },
+    "error": { "label": "No concluyente", "color": "error" }
+  },
+  "progress": {
+    "uploadingMs": 400,
+    "analyzingMs": 1200
+  }
+}

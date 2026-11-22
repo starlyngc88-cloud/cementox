@@ -1,0 +1,9 @@
+{
+  "colors": {
+    "status.success": "#16A34A",
+    "status.warning": "#D97706",
+    "status.error": "#DC2626",
+    "status.info": "#2563EB",
+    "status.neutral": "#6B7280"
+  }
+}
