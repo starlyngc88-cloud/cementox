@@ -1,4 +1,4 @@
-import type { MediaConfig, MeasurementConfig } from "./config-schema";
+﻿import type { MediaConfig, MeasurementConfig } from "./config-schema";
 
 export type ColorToken = "success" | "warning" | "error" | "info" | "neutral";
 
@@ -28,6 +28,9 @@ export interface AnalysisResult {
   preliminary: boolean;
   message: string;
   issues: EvidenceIssue[];
+  formula?: string;
+  formulaBasis?: string;
+  requiredAngles?: string[];
 }
 
 export interface AnalyzedFile {

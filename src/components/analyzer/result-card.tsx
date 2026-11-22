@@ -34,6 +34,18 @@ export function ResultCard({ result, statusLabel, preliminaryLabel }: ResultCard
         <p className="mt-2 text-sm text-slate-600">Consistencia: {result.consistencyLabel}</p>
       ) : null}
 
+      {result.formula ? (
+        <p className="mt-3 text-xs text-slate-500">
+          Formula: <span className="font-mono">{result.formula}</span>
+        </p>
+      ) : null}
+      {result.formulaBasis ? (
+        <p className="mt-1 text-xs text-slate-500">Base: {result.formulaBasis}</p>
+      ) : null}
+      {result.requiredAngles && result.requiredAngles.length > 0 ? (
+        <p className="mt-2 text-xs text-slate-500">Angulos requeridos: {result.requiredAngles.join(", ")}</p>
+      ) : null}
+
       <p className="mt-3 text-sm text-slate-700">{result.message}</p>
 
       {result.preliminary ? (
@@ -43,7 +55,7 @@ export function ResultCard({ result, statusLabel, preliminaryLabel }: ResultCard
       {result.issues.length > 0 ? (
         <ul className="mt-4 space-y-1 text-sm text-warning">
           {result.issues.map((issue) => (
-            <li key={issue.reason}>· {issue.message}</li>
+            <li key={issue.reason}>- {issue.message}</li>
           ))}
         </ul>
       ) : null}

@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: validation.errors.join(" ") }, { status: 422 });
   }
 
-  const result = analyzeEngine(`${file.name}:${file.size}:${file.type}`);
+  const result = analyzeEngine(`${file.name}:${file.size}:${file.type}`, validation.kind);
   const body: AnalyzeResponse = { result };
   return NextResponse.json(body);
 }
