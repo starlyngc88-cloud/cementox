@@ -28,6 +28,7 @@ export interface AnalysisResult {
   preliminary: boolean;
   message: string;
   issues: EvidenceIssue[];
+  subject?: string;
   formula?: string;
   formulaBasis?: string;
   requiredAngles?: string[];

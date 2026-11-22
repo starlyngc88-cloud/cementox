@@ -29,7 +29,7 @@ function classify(
   return { label: range.label, color: range.color };
 }
 
-export function analyzeEngine(seedSource: string, kind: MediaKind = "image"): AnalysisResult {
+export function analyzeEngine(seedSource: string, kind: MediaKind = "image", subject: string = "concreto"): AnalysisResult {
   const config = getConfig();
   const { measurement, media } = config;
   const thresholds = measurement.confidenceThresholds;
@@ -38,6 +38,21 @@ export function analyzeEngine(seedSource: string, kind: MediaKind = "image"): An
   const factor = measurement.conversions[measurement.outputUnit];
   const toOutputValue = (rawValue: number) => Math.round(rawValue * factor * 10) / 10;
   const requiredAngles = kind === "video" ? ["frames de ejemplo"] : ["frente"];
+
+  if (subject && subject !== "concreto") {
+    return {
+      status: "error",
+      color: "error",
+      estimatedValue: null,
+      unit: null,
+      confidence: null,
+      consistencyLabel: null,
+      preliminary: false,
+      message: measurement.messages.notConclusive,
+      issues: [{ reason: "processing_failed", message: measurement.messages.reasons.processing_failed }],
+      subject,
+    };
+  }
 
   if (scenario === "error") {
     const reason = "low_sharpness" as const;
@@ -54,6 +69,7 @@ export function analyzeEngine(seedSource: string, kind: MediaKind = "image"): An
       preliminary: false,
       message: measurement.messages.notConclusive,
       issues,
+      subject,
     };
   }
 
@@ -76,6 +92,7 @@ export function analyzeEngine(seedSource: string, kind: MediaKind = "image"): An
       preliminary: true,
       message: baseMessage("warning"),
       issues: [{ reason, message: measurement.messages.reasons[reason] }],
+      subject,
       formula: "magnitud_observada * factor_de_conversion",
       formulaBasis: "Basado en calibracion (referencia conocida) y consistencia.",
       requiredAngles,
@@ -93,6 +110,7 @@ export function analyzeEngine(seedSource: string, kind: MediaKind = "image"): An
     preliminary: true,
     message: measurement.messages.preliminary,
     issues: [],
+    subject,
     formula: "magnitud_observada * factor_de_conversion",
     formulaBasis: "Basado en calibracion (referencia conocida) y consistencia.",
     requiredAngles,
