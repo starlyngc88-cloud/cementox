@@ -48,7 +48,7 @@ export function analyzeEngine(seedSource: string, kind: MediaKind = "image", sub
       confidence: null,
       consistencyLabel: null,
       preliminary: false,
-      message: measurement.messages.notConclusive,
+      message: measurement.messages.notConcrete,
       issues: [{ reason: "processing_failed", message: measurement.messages.reasons.processing_failed }],
       subject,
     };

@@ -33,6 +33,7 @@
   "messages": {
     "preliminary": "Estimación preliminar sujeta a validación técnica.",
     "notConclusive": "La evidencia no es suficiente para estimar una medida.",
+    "notConcrete": "No se puede evaluar: solo se evalua el concreto.",
     "reasons": {
       "low_resolution": "Resolución por debajo del mínimo configurado.",
       "low_sharpness": "Imagen borrosa o fuera de foco.",

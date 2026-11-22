@@ -67,6 +67,7 @@ export const measurementConfigSchema = z.object({
   messages: z.object({
     preliminary: z.string().min(1),
     notConclusive: z.string().min(1),
+    notConcrete: z.string().min(1),
     reasons: z.object({
       low_resolution: z.string().min(1),
       low_sharpness: z.string().min(1),
